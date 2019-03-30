@@ -2,6 +2,7 @@ package com.maths_statistics;
 
 /*
 Check if a number is power of 10.
+@GS
  */
 public class PowerOfTen {
     public static void main(String[] args) {
