@@ -10,9 +10,9 @@ Given Stack :
 2
 5
 1
-64   --> Maximum
+64
 
-So Output must be 64 when getMax() is called.
+So Output must be 1 when getMin() is called.
  */
 
 // Use ArrayDequeue. It is supposed to be faster when used as a stack.
@@ -23,7 +23,7 @@ So Output must be 64 when getMax() is called.
  * beginning of the deque.  Stack methods are precisely equivalent to
  * {@code Deque} methods as indicated in the table below:
  */
-public class StackMaxAPI {
+public class StackMinAPI {
 
     public static void main(String[] args) {
         Stack<Integer> myStack = new Stack();
@@ -31,24 +31,24 @@ public class StackMaxAPI {
         myStack.push(-1);
         myStack.push(1);
         myStack.push(-1);
-        System.out.println("Get max " + myStack.getMax());
+        System.out.println("Get min " + myStack.getMin());
         System.out.println("Pop " + myStack.pop());
-        System.out.println("Get max " + myStack.getMax());
+        System.out.println("Get min " + myStack.getMin());
 
         System.out.println("Pop " + myStack.pop());
-        System.out.println("Get max " + myStack.getMax());
+        System.out.println("Get min " + myStack.getMin());
 
     }
 
     private static class Cache {
         Integer element;
-        Integer maxElement;
+        Integer minElement;
 
         // for a given element of stack, store max element at or below this element.
 
-        public Cache(Integer element, Integer maxElement) {
+        public Cache(Integer element, Integer minElement) {
             this.element = element;
-            this.maxElement = maxElement;
+            this.minElement = minElement;
         }
     }
 
@@ -62,13 +62,13 @@ public class StackMaxAPI {
 
         void push(int i) {
             Integer element = i;
-            Integer max;
+            Integer min;
             if (isEmpty()) {
-                max = i;
+                min = i;
             } else {
-                max = Integer.max(cacheQueue.peekFirst().maxElement, i);
+                min = Integer.min(cacheQueue.peekFirst().minElement, i);
             }
-            cacheQueue.addFirst(new Cache(element, max));
+            cacheQueue.addFirst(new Cache(element, min));
 
         }
 
@@ -80,8 +80,8 @@ public class StackMaxAPI {
             return cacheQueue.isEmpty();
         }
 
-        int getMax() {
-            return cacheQueue.peekFirst().maxElement;
+        int getMin() {
+            return cacheQueue.peekFirst().minElement;
         }
     }
 }
