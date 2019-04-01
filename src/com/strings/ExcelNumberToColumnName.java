@@ -10,7 +10,7 @@ public class ExcelNumberToColumnName {
     private static final int LETTER_COUNT = 26;
 
     public static void main(String[] args) {
-        int num = 915;
+        int num = 17602;
         System.out.println(findStringRep(num));
     }
 
