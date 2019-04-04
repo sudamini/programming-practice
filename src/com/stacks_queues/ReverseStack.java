@@ -1,6 +1,9 @@
 package com.stacks_queues;
 
 import java.util.Stack;
+/*
+@GS. Uses multi level recursion to reverse a stack.
+ */
 
 public class ReverseStack {
 
